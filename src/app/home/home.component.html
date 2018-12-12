@@ -1,0 +1,63 @@
+<h1>Login your account</h1>
+<form #approForm="ngForm" novalidate autocomplete="off">
+
+
+    User Id:- <input type="text" name="Email-Id" placeholder="Email-Id" [(ngModel)]="User" #log="ngModel"
+        only-alphabets required>
+    <app-menu [displayError]="log.invalid && log.errors.required && (log.dirty || log.touched || approForm.submitted)"
+        errorMsg="Please Enter Your ID">
+    </app-menu>
+
+    <br>
+    Password:- <input type="text" name="Password" placeholder="Password" [(ngModel)]="Password" #pass="ngModel"
+        required>
+    <app-menu [displayError]="pass.invalid && pass.errors && (pass.dirty||pass.touched||approForm.submitted)" errorMsg=" Please Enter Your Correct PASSWORD">
+
+    </app-menu>
+    <br>
+    mob no:- <input type="text" name="Password" placeholder="number" [(ngModel)]="Password" #mob="ngModel" only-numbers
+        required>
+    <app-menu [displayError]="mob.invalid && mob.errors && (mob.dirty||mob.touched||approForm.submitted)" errorMsg=" Please Enter Your Correct PASSWORD">
+
+    </app-menu>
+    <button type="submit" name="submit"> Submit </button>
+
+    <div>
+            Search:<input type="text" name="search" [(ngModel)]="searchVal"> 
+            {{searchVal}}
+            <hr>
+        <table cellpading="2" cellspacing="2" border= "1">
+            <tr>
+                <th>SR.NO</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email-Id</th>
+            </tr>
+            <tr *ngFor="let val of showArr | LockFilter: searchVal">
+                <td>{{val.id}} </td>
+                <td>{{val.name}}</td>
+                <td>{{val.username}}</td>
+                <td>{{val.email}}</td>
+            </tr>
+        </table>
+    </div>
+</form>
+<!-- <h1> Student Login </h1>
+   <form #approForm="ngForm" novalidate autocomplete="off">
+  <h3>Student Id:-
+  <input type ="text" name ="student e-mail id" placeholder="Id" [(ngModel)]="firstname1" #pwd="ngModel"
+  required>
+  <app-menu [displayError]="pwd.invalid && pwd.errors.required && (pwd.dirty || pwd.touched || approForm.submitted)"  errorMsg="Please enter first name">
+  </app-menu>
+</h3>
+<h3> Password :-
+    <input type="text" name = "Password" placeholder="Password" [(ngModel)]="firstname2" #swd="ngModel"
+    required>
+    <app-menu [displayError]="swd.invalid && swd.errors.required && (swd.dirty || swd.touched || approForm.submitted)"  errorMsg="Please enter password ">
+    </app-menu>
+    </h3>
+<button type="submit" name="submit" > Submit </button> 
+
+<button type="cancel" name="cancel">Cancel</button>
+<hr>
+</form>    -->
